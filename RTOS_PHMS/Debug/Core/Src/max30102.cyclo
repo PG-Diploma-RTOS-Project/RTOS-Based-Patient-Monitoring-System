@@ -1,0 +1,12 @@
+../Core/Src/max30102.c:26:26:MAX30102_WriteRegister	1
+../Core/Src/max30102.c:31:26:MAX30102_ReadRegister	1
+../Core/Src/max30102.c:36:26:MAX30102_ReadBytes	1
+../Core/Src/max30102.c:41:26:MAX30102_Reset	2
+../Core/Src/max30102.c:53:26:MAX30102_CheckPartID	3
+../Core/Src/max30102.c:70:26:MAX30102_FIFO_Init	5
+../Core/Src/max30102.c:87:26:MAX30102_SPO2_Config	3
+../Core/Src/max30102.c:102:26:MAX30102_LED_Config	3
+../Core/Src/max30102.c:117:19:MAX30102_Init	6
+../Core/Src/max30102.c:137:19:MAX30102_ReadSample	3
+../Core/Src/max30102.c:160:7:Calculate_SPO2	11
+../Core/Src/max30102.c:197:6:Calculate_HeartRate	18

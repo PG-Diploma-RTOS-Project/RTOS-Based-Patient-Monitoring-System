@@ -1,0 +1,5 @@
+../Core/Src/lcd.c:12:6:lcd_init	8	static
+../Core/Src/lcd.c:36:6:lcd_write_nibble	32	static
+../Core/Src/lcd.c:51:6:lcd_write_byte	24	static
+../Core/Src/lcd.c:62:6:lcd_puts	24	static
+../Core/Src/lcd.c:72:6:lcd_clear	8	static
