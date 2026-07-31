@@ -1,0 +1,2 @@
+../Core/Src/uart_debug.c:17:6:UART_SendString	16	static
+../Core/Src/uart_debug.c:25:6:UART_SendNumber	24	static
