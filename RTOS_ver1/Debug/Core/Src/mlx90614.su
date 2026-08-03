@@ -1,0 +1,2 @@
+../Core/Src/mlx90614.c:8:7:MLX90614_ReadObjectTemp	32	static
+../Core/Src/mlx90614.c:26:7:MLX90614_ReadAmbientTemp	32	static

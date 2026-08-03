@@ -1,0 +1,9 @@
+../Core/Src/st7735.c:13:13:ST7735_WriteCommand	16	static
+../Core/Src/st7735.c:20:13:ST7735_WriteData	16	static
+../Core/Src/st7735.c:27:13:ST7735_SetAddressWindow	32	static
+../Core/Src/st7735.c:48:6:ST7735_Init	24	static
+../Core/Src/st7735.c:80:6:ST7735_DrawPixel	24	static
+../Core/Src/st7735.c:90:6:ST7735_FillRect	32	static
+../Core/Src/st7735.c:107:6:ST7735_FillScreen	24	static
+../Core/Src/st7735.c:111:6:ST7735_WriteChar	40	static
+../Core/Src/st7735.c:154:6:ST7735_WriteString	32	static

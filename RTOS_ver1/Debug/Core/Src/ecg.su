@@ -1,0 +1,4 @@
+../Core/Src/ecg.c:10:9:ECG_LeadOffDetected	8	static
+../Core/Src/ecg.c:21:6:ECG_Init	8	static
+../Core/Src/ecg.c:30:6:HAL_ADC_ConvHalfCpltCallback	24	static,ignoring_inline_asm
+../Core/Src/ecg.c:45:6:HAL_ADC_ConvCpltCallback	24	static,ignoring_inline_asm

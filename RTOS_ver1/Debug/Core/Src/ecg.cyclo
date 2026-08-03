@@ -1,0 +1,4 @@
+../Core/Src/ecg.c:10:9:ECG_LeadOffDetected	3
+../Core/Src/ecg.c:21:6:ECG_Init	1
+../Core/Src/ecg.c:30:6:HAL_ADC_ConvHalfCpltCallback	3
+../Core/Src/ecg.c:45:6:HAL_ADC_ConvCpltCallback	4
