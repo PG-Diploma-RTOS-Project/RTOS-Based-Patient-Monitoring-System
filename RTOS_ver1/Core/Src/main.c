@@ -123,26 +123,19 @@ void vUARTTask(void *pvParameters);
 /* USER CODE BEGIN 0 */
 void vECGTask(void *argument)
 {
-    ECG_Init(); // Starts TIM2 & ADC DMA[cite: 1]
+    ECG_Init(); // Starts TIM2 & ADC DMA
 
     while(1)
     {
-        // Wait for notification from ADC DMA interrupt[cite: 1]
+        // Wait for notification from ADC DMA interrupt
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
-        // Check lead-off status[cite: 1]
-        if(ECG_LeadOffDetected())
-        {
-            char msg[] = "ECG: LEADS OFF\r\n";
-            HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), 10);
-            continue;
-        }
-
-        // Direct task notification to wake UART task immediately
+        // Always notify the UART task so vUARTTask can process the DMA buffer
+        // and handle lead-off state cleanly ($E,0 or $E,val)
         if(UARTTaskHandle != NULL)
-                {
-                    xTaskNotifyGive(UARTTaskHandle);
-                }
+        {
+            xTaskNotifyGive(UARTTaskHandle);
+        }
     }
 }
 
@@ -274,49 +267,47 @@ void vTFTTask(void *pvParameters)
 void vUARTTask(void *argument)
 {
     SystemData_t vitalsSnapshot = {0};
-    char txBuffer[128];
-    static uint8_t leadoff_counter = 0;
+    char txBuffer[96];
 
     while(1)
     {
+        // Clear Overrun Errors on USART2 if any occurred
         if (__HAL_UART_GET_FLAG(&huart2, UART_FLAG_ORE)) {
             __HAL_UART_CLEAR_OREFLAG(&huart2);
         }
 
+        // Non-blocking attempt to refresh latest sensor snapshot
         xQueueReceive(xUARTQueue, &vitalsSnapshot, 0);
 
+        // Wait for DMA half/full transfer notification from ISR
         if(ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(10)) > 0)
         {
-            if (ECG_LeadOffDetected()) {
-                if (leadoff_counter < 5) leadoff_counter++;
-            } else {
-                leadoff_counter = 0;
-            }
-
             uint16_t startIdx = (dmaReady == ECG_FIRST_HALF) ? 0 : ECG_BUFFER_SIZE;
 
-            // Stride of 4: Downsamples high-frequency DMA buffer
-            // Eliminates UART congestion while maintaining 115200 baud efficiency!
+            // Check Lead-Off Detection pins (PA1 = LO+, PA4 = LO-)
+            uint8_t isLeadOff = (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == GPIO_PIN_SET) ||
+                                (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_4) == GPIO_PIN_SET);
+
             for(int i = startIdx; i < (startIdx + ECG_BUFFER_SIZE); i += 4)
             {
-                uint16_t valToSend = (leadoff_counter < 3) ? adcBuffer[i] : 0;
+                // Force ADC value to 0 if ECG leads are disconnected
+                uint16_t ecgVal = isLeadOff ? 0 : adcBuffer[i];
 
                 int len = snprintf(txBuffer, sizeof(txBuffer),
-                                   "$%u,%.1f,%.1f,%d,%.1f\r\n",
-                                   valToSend,
+                                   "$D,%u,%.2f,%.2f,%d,%.2f\r\n",
+                                   ecgVal,
                                    vitalsSnapshot.objectTemp,
                                    vitalsSnapshot.ambientTemp,
                                    vitalsSnapshot.heartRate,
                                    vitalsSnapshot.spo2);
 
-                HAL_UART_Transmit(&huart2, (uint8_t*)txBuffer, len, 5);
+                HAL_UART_Transmit(&huart2, (uint8_t*)txBuffer, len, 10);
             }
 
             dmaReady = ECG_NONE;
         }
     }
 }
-
 
 void vTemperatureTask(void *pvParameters)
 {
