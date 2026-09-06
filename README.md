@@ -103,7 +103,7 @@ It is responsible for:
 - TFT display control
 - Communication with ESP32
 
-![STM32F407 Discovery Board](RTOS_ver1/Images/stm32f407.jpg)
+![STM32F407 Discovery Board](RTOS_ver1/Images/stm32f407.jpeg)
 
 ---
 
@@ -127,7 +127,7 @@ ECG acquisition flow:
          ↓
     ECG Waveform
 
-![AD8232 ECG Sensor](RTOS_ver1/Images/ad8232.jpg)
+![AD8232 ECG Sensor](RTOS_ver1/Images/ad8232.jpeg)
 
 ---
 
@@ -140,7 +140,7 @@ The MAX30102 sensor is used to measure:
 
 The sensor provides optical sensing data to the STM32 for processing.
 
-![MAX30102 Sensor](RTOS_ver1/Images/max30102.jpg)
+![MAX30102 Sensor](RTOS_ver1/Images/max30102.jpeg)
 
 ---
 
@@ -148,7 +148,7 @@ The sensor provides optical sensing data to the STM32 for processing.
 
 The MLX90614 is a non-contact infrared temperature sensor used for temperature measurement.
 
-![MLX90614 Temperature Sensor](RTOS_ver1/Images/mlx90614.jpg)
+![MLX90614 Temperature Sensor](RTOS_ver1/Images/mlx90614.jpeg)
 
 ---
 
@@ -156,7 +156,7 @@ The MLX90614 is a non-contact infrared temperature sensor used for temperature m
 
 The ST7735 TFT display is used to provide a local interface for displaying patient monitoring information.
 
-![ST7735 TFT Display](RTOS_ver1/Images/st7735_tft.jpg)
+![ST7735 TFT Display](RTOS_ver1/Images/st7735_tft.jpeg)
 
 ---
 
@@ -168,7 +168,7 @@ The STM32 sends processed health data to the ESP32 through UART.
 
 The ESP32 then sends the data over Wi-Fi to the Flask backend using HTTP.
 
-![ESP32](RTOS_ver1/Images/esp32.jpg)
+![ESP32](RTOS_ver1/Images/esp32.jpeg)
 
 ---
 
@@ -284,7 +284,7 @@ The dashboard displays parameters such as:
 
 The acquired ECG samples can be visualized as an ECG waveform.
 
-![ECG Waveform](RTOS_ver1/Images/ecg_waveform.jpg)
+![ECG Waveform](RTOS_ver1/Images/ecg_waveform.jpeg)
 
 ---
 
@@ -292,7 +292,7 @@ The acquired ECG samples can be visualized as an ECG waveform.
 
 The complete hardware setup integrates the STM32F407, sensors, TFT display, ESP32, and supporting connections.
 
-![Complete Hardware Setup](RTOS_ver1/Images/complete_hardware.jpg)
+![Complete Hardware Setup](RTOS_ver1/Images/complete_hardware.jpeg)
 
 ---
 
@@ -408,35 +408,35 @@ This project was developed as a group project by the following team members:
 
 ### Complete Hardware Setup
 
-![Complete Hardware Setup](RTOS_ver1/Images/complete_hardware.jpg)
+![Complete Hardware Setup](RTOS_ver1/Images/complete_hardware.jpeg)
 
 ### STM32F407 Discovery Board
 
-![STM32F407](RTOS_ver1/Images/stm32f407.jpg)
+![STM32F407](RTOS_ver1/Images/stm32f407.jpeg)
 
 ### AD8232 ECG Sensor
 
-![AD8232](RTOS_ver1/Images/ad8232.jpg)
+![AD8232](RTOS_ver1/Images/ad8232.jpeg)
 
 ### MAX30102 Sensor
 
-![MAX30102](RTOS_ver1/Images/max30102.jpg)
+![MAX30102](RTOS_ver1/Images/max30102.jpeg)
 
 ### MLX90614 Temperature Sensor
 
-![MLX90614](RTOS_ver1/Images/mlx90614.jpg)
+![MLX90614](RTOS_ver1/Images/mlx90614.jpeg)
 
 ### ST7735 TFT Display
 
-![ST7735 TFT](RTOS_ver1/Images/st7735_tft.jpg)
+![ST7735 TFT](RTOS_ver1/Images/st7735_tft.jpeg)
 
 ### ESP32
 
-![ESP32](RTOS_ver1/Images/esp32.jpg)
+![ESP32](RTOS_ver1/Images/esp32.jpeg)
 
 ### ECG Waveform
 
-![ECG Waveform](RTOS_ver1/Images/ecg_waveform.jpg)
+![ECG Waveform](RTOS_ver1/Images/ecg_waveform.jpeg)
 
 ### Web Dashboard
 
